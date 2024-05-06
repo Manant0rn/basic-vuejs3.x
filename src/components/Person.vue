@@ -35,16 +35,17 @@
         <template v-slot:card-header>
             <h1>ชื่อ : {{ name }}</h1>
         </template>
-        <template v-slot:card-button>
+        <!-- <template v-slot:card-button>
             <button @click="showDescription(id)">ดูรายละเอียด</button> &nbsp;
             <button @click="deleteeEmployee(id)">ลบข้อมูลพนักงาน</button>
-        </template>
+        </template> -->
         <template v-slot:card-content>
-            <transition name="fade">
-                <div v-show="isVisible">
+            <!-- <transition name="fade"> -->
+                <!-- <div v-show="isVisible"> -->
                     <p>เงินเดือน : {{ salary }} , ตำแหน่งงาน : {{ department }}</p>
-                </div>
-            </transition>
+                    <p>เพศ : {{ gender }} , ทักษะ : {{ skill }}</p>
+                <!-- </div> -->
+            <!-- </transition> -->
         </template>
     </Card>
 </template>
@@ -80,24 +81,30 @@ export default {
             type:String,
             required:true
         },
-        isVisible:{
-            type:Boolean,
-            required:true
-        }
-    },
-    // Custom Event (Children to Parent)
-    methods:{
-        // Custom Event (Children to Parent)
-        showDescription(id){
-            console.log(id);
-            this.$emit("show",id);
+        // isVisible:{
+        //     type:Boolean,
+        //     required:true
+        // }
+        gender:{
+            type:String
         },
-        // Custom Event (ลบข้อมูล)
-        deleteeEmployee(id){
-            console.log(id);
-            this.$emit("delete",id);
+        skill:{
+            type:Array
         }
-    }
+    }//,
+    // Custom Event (Children to Parent)
+    // methods:{
+        // Custom Event (Children to Parent)
+        // showDescription(id){
+        //     console.log(id);
+        //     this.$emit("show",id);
+        // },
+        // Custom Event (ลบข้อมูล)
+    //     deleteeEmployee(id){
+    //         console.log(id);
+    //         this.$emit("delete",id);
+    //     }
+    // }
 }
 </script>
 

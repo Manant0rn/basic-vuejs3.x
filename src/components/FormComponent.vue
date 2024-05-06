@@ -73,8 +73,25 @@ export default {
     },
     methods:{
         submitForm(){
-            console.log("บันทึกข้อมูลพนักงาน")
-            console.log(this.employee)
+            // console.log("บันทึกข้อมูลพนักงาน")
+            // console.log(this.employee)
+            // this.$emit("save",this.employee);
+            const newEmployee={
+                name:this.employee.name,
+                salary:this.employee.salary,
+                department:this.employee.department,
+                gender:this.employee.gender,
+                skill:this.employee.skill
+            }
+            this.$emit("save",newEmployee);
+            this.resetForm();
+        },
+        resetForm(){
+            this.employee.name="",
+            this.employee.salary=0,
+            this.employee.department="",
+            this.employee.gender="",
+            this.employee.skill=[]
         }
     }
 }

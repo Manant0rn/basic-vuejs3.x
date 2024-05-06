@@ -3,26 +3,27 @@
   <header>
     <h1>ระบบจัดการข้อมูลพนักงาน</h1>
   </header>
+  <FormComponent @save="insertEmployee" />
   <!-- <div> -->
     <!-- <h1>Hello World</h1> -->
     <!-- <FormComponent/> -->
     <!-- <ListData :employees="employees" /> -->
-    <section class="employee-content">
+    <section class="employee-content" v-if="employees.length>0">
       <h2>ข้อมูลพนักงานทุกคน</h2>
-      <ListData />
+      <ListData :employees="employees"/>
     </section>
   <!-- </div> -->
 </template>
 
 <!-- การทำงาน -->
 <script>
-// import FormComponent from './components/FormComponent.vue'
+import FormComponent from './components/FormComponent.vue'
 import ListData from './components/ListData.vue'
 export default {
   name:"App",
   components:{
-    ListData
-    // FormComponent
+    ListData,
+    FormComponent
   },
   // data(){
   //   return{
@@ -39,6 +40,17 @@ export default {
   //     ]
   //   }
   // }
+  data(){
+    return{
+      employees:[]
+    }
+  },
+  methods:{
+    insertEmployee(data){
+      console.log("รับข้อมูลพนักงาน = " ,data);
+      this.employees.push(data);
+    }
+  }
 }
 </script>
 
